@@ -6,7 +6,8 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import ProjectsForUser from "./pages/ProjectsForUser";
 import Register from "./pages/Register";
-import { ADMIN_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, HOME_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, REGISTER_ROUTE } from "./utils/consts";
+import Users from "./pages/Users";
+import { ADMIN_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, HOME_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, REGISTER_ROUTE, USERS_ROUTE } from "./utils/consts";
 
 export const authRoutes = [
     {
@@ -44,5 +45,9 @@ export const publicRoutes = [
     {
         path: APPLICATIONS_ROUTE,
         Component: ApplicationsForUser
+    },
+    {
+        path: USERS_ROUTE,
+        Component: Users
     }
 ]

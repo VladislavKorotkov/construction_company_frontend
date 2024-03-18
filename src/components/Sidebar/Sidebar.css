@@ -1,0 +1,15 @@
+.sidebar {
+    background-color: #ffffff;
+    width: 20%;
+    height: 100vh;
+    padding: 5px;
+    padding-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-right: 20px;
+  }
+ 
+  .sidebar-link:hover {
+    background-color: #eeeeee;
+  }

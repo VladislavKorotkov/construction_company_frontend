@@ -17,6 +17,7 @@ const Header = (()=>{
                     {userApp._isAuth?
                     <Button variant="primary">Личный аккаунт</Button>:
                     <Button variant="primary" href="/login">Авторизация</Button>
+
                 }
                    
                 </Nav>

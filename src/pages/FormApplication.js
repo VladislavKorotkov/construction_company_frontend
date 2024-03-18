@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 export default function FormApplication() {
   return (
     <Container className="d-flex justify-content-center align-items-center" style={{ height: window.innerHeight - 54 }}>
-      <Card style={{ width: 500 }} className="p-5">
+      <Card style={{ width: 500}} className="p-5 card">
         <h2 className="m-auto mb-3">Заполнение заявки</h2>
         <Form.Floating className="mb-3">
           <Form.Control

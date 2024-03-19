@@ -52,7 +52,7 @@ export default function ApplicationsForUser() {
         <div className="app">
               <Layout role="user">
                   <div className="d-flex justify-content-center" style={{ minHeight: '100vh' }}>
-                      <div style={{ width: '100%', maxWidth: '600px' }}>
+                      <div style={{  width: '90%', maxWidth:'100%'  }}>
                         <h2>Оставленные заявки</h2>
                         <Button href="/application/add" className="my-3">Оставить новую заявку</Button>
                         <Accordion defaultActiveKey="0" flush>

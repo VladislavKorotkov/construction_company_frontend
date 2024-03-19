@@ -39,7 +39,7 @@ const Users = () => {
       <div className="app">
             <Layout role="user">
                 <div className="d-flex justify-content-center" style={{ minHeight: '100vh' }}>
-                    <div style={{ width: '100%', maxWidth: '600px' }}>
+                    <div style={{  width: '90%', maxWidth:'100%' }}>
                     <h2>Аккаунты</h2>
                     <Button href="/application/add" className="my-3">Добавить новый аккаунт</Button>
                         <UsersTable users={users}></UsersTable>

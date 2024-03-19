@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Completed from './Completed';
 
 const ProjectCard = ( {project} ) => {
   const projectUrl = `/project/${project.id}`;
@@ -13,13 +14,7 @@ const ProjectCard = ( {project} ) => {
           <Card.Title>{project.name}</Card.Title>
           <Card.Text>{project.dateOfCreation}</Card.Text>
         </div>
-        <div>
-          {project.isCompleted ? (
-            <span className="text-success">Завершено</span>
-          ) : (
-            <span className="text-warning">В процессе</span>
-          )}
-        </div>
+        <Completed isCompleted={project.isCompleted}></Completed>
       </div>
       <Link to={projectUrl} className="stretched-link"></Link>
     </Card.Body>

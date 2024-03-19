@@ -1,0 +1,16 @@
+.task-status {
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+  
+.task-waiting {
+color: rgb(251, 176, 0)
+}
+
+.task-in-progress {
+color:rgb(0, 213, 251)
+}
+
+.task-completed {
+    color:rgb(18, 182, 0)
+}

@@ -4,10 +4,11 @@ import Auth from "./pages/Auth";
 import FormApplication from "./pages/FormApplication";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import Project from "./pages/Project";
 import ProjectsForUser from "./pages/ProjectsForUser";
 import Register from "./pages/Register";
 import Users from "./pages/Users";
-import { ADMIN_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, HOME_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, REGISTER_ROUTE, USERS_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, HOME_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, PROJECT_ROUTE, REGISTER_ROUTE, USERS_ROUTE } from "./utils/consts";
 
 export const authRoutes = [
     {
@@ -49,5 +50,9 @@ export const publicRoutes = [
     {
         path: USERS_ROUTE,
         Component: Users
+    },
+    {
+        path: PROJECT_ROUTE,
+        Component: Project
     }
 ]

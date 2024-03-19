@@ -1,20 +1,40 @@
+/* Sidebar.css */
 .sidebar {
-    background-color: #ffffff;
-    width: 25%;
-    height: auto;
-    padding: 5px;
-    padding-top: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-right: 20px;
-  }
- 
-  .sidebar-link:hover {
-    background-color: #eeeeee;
-  }
+  background-color: #ffffff;
+  width: 25%;
+  height: auto;
+  padding: 5px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
 
-  .nav-link {
-    color: black;
-    font-size: 1rem;
-  }
+.sidebar-heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-link {
+  padding: 1px;
+}
+
+.nav-link:hover {
+  background-color: #eeeeee;
+}
+
+.sidebar-link .nav-link {
+  color: black;
+  font-size: 1rem;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.sidebar-link .nav-link .icon {
+  margin-right: 5px;
+  font-size: 1.2rem;
+}

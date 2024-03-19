@@ -4,8 +4,9 @@ import {Card} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import ProjectInfoCard from '../components/ProjectInfoCard';
 import TaskCard from '../components/TaskCard';
+import ProjectManagementButtons from '../components/ProjectManagmentButtons';
 
-export default function Project() {
+export default function ProjectManagment() {
     const project =
         {
             name:"Ремонт квартиры",
@@ -54,11 +55,8 @@ export default function Project() {
               <Layout role="user">
                   <div className="d-flex justify-content-center" style={{ minHeight: '100vh'}}>
                       <div style={{ width: '90%', maxWidth:'100%' }}>
-                        <ProjectInfoCard project={project} flag={true}/>
-                        <h2>Задачи</h2>
-                        {project.tasks.map((task) => (
-                                <TaskCard key={task.id} task={(task)} />
-                            ))}
+                        <ProjectInfoCard project={project} flag={false}/>
+                        <ProjectManagementButtons></ProjectManagementButtons>
                       </div>
                   </div>
               </Layout>

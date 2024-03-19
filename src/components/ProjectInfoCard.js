@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import projectImage from "../img/project.png"
 import Completed from './Completed';
 
-const ProjectInfoCard = ({ project}) => {
+const ProjectInfoCard = ({ project, flag}) => {
   return (
     <Card className="w-100">
       <Card.Body className="text-center" style={{padding: '2rem'}}>
@@ -25,7 +25,10 @@ const ProjectInfoCard = ({ project}) => {
         <div className="d-flex justify-content-center">
           <Button variant="primary" className="mx-2">Скачать смету</Button>
           <Button variant="primary" className="mx-2">Скачать договор</Button>
+          {project.isCompleted&&flag==true?<Button variant="success" className="mx-2">Оставить отзыв</Button>:null}
+          
         </div>
+
       </Card.Body>
     </Card>
   );

@@ -12,6 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const data = {
   userApp: new UserApp()
 }
+
 root.render(
   <Context.Provider value={data}>
     <React.StrictMode>

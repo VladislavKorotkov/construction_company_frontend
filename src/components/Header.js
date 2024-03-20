@@ -12,7 +12,7 @@ const Header = (()=>{
     return(
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand href={HOME_ROUTE}>Стройся-ка</Navbar.Brand>
+                <Navbar.Brand href={HOME_ROUTE}><strong>Стройся-ка</strong></Navbar.Brand>
                 <Nav className="ml-auto">
                     {userApp._isAuth?
                     <Button variant="primary">Личный аккаунт</Button>:

@@ -3,7 +3,7 @@ import {makeAutoObservable} from 'mobx'
 export default class UserApi{
     constructor(){
         this._isAuth = false
-        this._user
+        this._user = null
         makeAutoObservable(this)
     }
 

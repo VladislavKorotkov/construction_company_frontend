@@ -4,6 +4,7 @@ export default class UserApi{
     constructor(){
         this._isAuth = false
         this._user = null
+        this._role = 'ROLE_USER'
         makeAutoObservable(this)
     }
 
@@ -13,6 +14,14 @@ export default class UserApi{
 
     setUser(user){
         this._user = user
+    }
+
+    setRole(role){
+        this._role = role
+    }
+
+    getRole(){
+        return this._role
     }
 
     getIsAuth(){

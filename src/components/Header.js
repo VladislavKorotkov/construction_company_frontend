@@ -16,7 +16,7 @@ const Header = observer (()=>{
             <Container>
                 <Navbar.Brand href={HOME_ROUTE}><strong>Стройся-ка</strong></Navbar.Brand>
                 <Nav className="ml-auto">
-                    {userApp._isAuth?
+                    {userApp.getIsAuth()?
                     <Button variant="primary">Личный аккаунт</Button>:
                     <Button variant="primary" href="/login">Авторизация</Button>
 

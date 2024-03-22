@@ -12,9 +12,11 @@ const App = observer(()=> {
   const {userApp} = useContext(Context)
   useEffect(()=>{
     check().then(data=>{
-      userApp.setIsAuth(true)
-      userApp.setUser(data)
-      userApp.setRole(data.role)
+      if(data){
+        userApp.setIsAuth(true)
+        userApp.setUser(data)
+        userApp.setRole(data.role)
+      }
     })
   }, [])
   return (

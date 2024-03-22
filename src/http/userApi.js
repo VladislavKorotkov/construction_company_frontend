@@ -36,5 +36,4 @@ export const check = async () =>{
     else{
         return false
     }
-   
 }

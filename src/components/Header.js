@@ -6,8 +6,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { HOME_ROUTE } from "../utils/consts";
 import { Button } from "react-bootstrap";
+import { observable } from "mobx";
+import { observer } from "mobx-react-lite";
 
-const Header = (()=>{
+const Header = observer (()=>{
     const {userApp} = useContext(Context)
     return(
         <Navbar expand="lg" className="bg-body-tertiary">

@@ -1,28 +1,28 @@
 import React, { useContext, useState } from 'react';
 import { Container, Card, Form, Button } from 'react-bootstrap';
-import { NavLink, useLocation } from 'react-router-dom';
-import { REGISTER_ROUTE } from '../utils/consts';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { PROFILE_ROUTE, REGISTER_ROUTE } from '../utils/consts';
 import { login } from '../http/userApi';
 import { observer } from 'mobx-react-lite';
 import { Context } from '..';
 
 const Auth= observer (() =>{
     const location = useLocation()
+    const navigate = useNavigate()
     const {userApp} = useContext(Context)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const signIn  = async() => {
         try{
             const data = await login(username, password)
-            console.log(data)
             userApp.setIsAuth(true)
             userApp.setUser(data)
             userApp.setRole(data.role)
+            navigate(PROFILE_ROUTE)
         }
         catch(e){
-            alert(e.response.data)
+            alert("Неверный логин или пароль")
         }
-       
     }
     return (
         <Container className='d-flex justify-content-center align-items-center' style ={{height: window.innerHeight - 54}}>

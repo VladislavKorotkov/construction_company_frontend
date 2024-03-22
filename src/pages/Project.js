@@ -51,7 +51,7 @@ export default function Project() {
     return (
         <>
         <div className="app">
-              <Layout role="user">
+              <Layout>
                   <div className="d-flex justify-content-center" style={{ minHeight: '100vh'}}>
                       <div style={{ width: '90%', maxWidth:'100%' }}>
                         <ProjectInfoCard project={project} flag={true}/>

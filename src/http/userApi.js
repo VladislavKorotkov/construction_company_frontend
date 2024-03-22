@@ -15,6 +15,26 @@ export const login = async (username, password) =>{
 }
 
 export const check = async () =>{
-    const {data} = await $host.post('/api/check')
-    return data
+    const token = localStorage.getItem('accessToken')
+    if(token){
+        const {data} = await $authHost.post('/api/auth/is-access-token-valid', {token: token})
+        if(data.accessTokenValid)
+            return jwtDecode(token)
+        else{
+            try {
+                const jwtRefreshToken = localStorage.getItem("refreshToken")
+                const response = await $host.post('/api/auth/refresh-token', {
+                    jwtRefreshToken: jwtRefreshToken
+                });
+                localStorage.setItem('accessToken', response.data.accessToken);
+                return jwtDecode(response.data.accessToken)
+            } catch (e) {
+                return false
+            }
+        }
+    }
+    else{
+        return false
+    }
+   
 }

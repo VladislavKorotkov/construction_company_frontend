@@ -2,10 +2,10 @@ import React from 'react';
 import './Layout.css';
 import Sidebar from '../Sidebar/Sidebar';
 
-const Layout = ({ role, children }) => {
+const Layout = ({ children }) => {
   return (
     <div className="layout">
-      <Sidebar role={role} />
+      <Sidebar/>
       <div className="content">{children}</div>
     </div>
   );

@@ -20,8 +20,7 @@ const Header = observer (()=>{
                     <Button variant="primary">Личный аккаунт</Button>:
                     <Button variant="primary" href="/login">Авторизация</Button>
 
-                }
-                   
+                }  
                 </Nav>
         </Container>
     </Navbar>

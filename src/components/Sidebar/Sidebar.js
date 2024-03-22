@@ -1,34 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Sidebar.css';
+import { Context } from '../..';
+import { observer } from 'mobx-react-lite';
 
-const Sidebar = ({ role }) => {
+const Sidebar = observer( () => {
   let links;
   let heading;
+  const {userApp} = useContext(Context)
 
-  if (role === 'admin') {
+  if (userApp.getRole() === 'ROLE_ADMIN') {
     heading = 'Администратор';
     links = [
       { name: 'Профиль', url: '/profile', icon: 'bi bi-person' },
       { name: 'Пользователи', url: '/users', icon: 'bi bi-people' },
       { name: 'Проекты', url: '/projects', icon: 'bi bi-folder' },
     ];
-  } else if (role === 'user') {
+  } else if (userApp.getRole() === 'ROLE_USER') {
     heading = 'Пользователь';
     links = [
       { name: 'Профиль', url: '/profile', icon: 'bi bi-person' },
       { name: 'Заявки', url: '/applications', icon: 'bi bi-list' },
       { name: 'Проекты', url: '/projects', icon: 'bi bi-folder' },
     ];
-  } else if (role === 'builder') {
+  } else if (userApp.getRole()  === 'ROLE_BUILDER') {
     heading = 'Строитель';
     links = [
       { name: 'Профиль', url: '/profile', icon: 'bi bi-person' },
       { name: 'Задачи', url: '/tasks', icon: 'bi bi-check-square' },
       { name: 'Проекты', url: '/projects', icon: 'bi bi-folder' },
     ];
-  } else if (role === 'foreman') {
+  } else if (userApp.getRole() === 'ROLE_FOREMAN') {
     heading = 'Бригадир';
     links = [
       { name: 'Профиль', url: '/profile', icon: 'bi bi-person' },
@@ -54,6 +57,6 @@ const Sidebar = ({ role }) => {
       </Nav>
     </div>
   );
-};
+})
 
 export default Sidebar;

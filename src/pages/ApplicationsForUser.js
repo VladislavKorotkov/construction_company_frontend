@@ -4,14 +4,14 @@ import { Accordion, Button } from 'react-bootstrap';
 import ApplicationAccordion from '../components/ApplicationAccordion/ApplicationAccordion';
 import { useNavigate } from 'react-router-dom';
 import { APPLICATION_FORM_ROUTE } from '../utils/consts';
-import { GetApplicationsForUser } from '../http/ApplicationApi';
+import { getApplicationsForUser } from '../http/ApplicationApi';
 
 export default function ApplicationsForUser() {
     const [applications, setApplications] = useState([]);
     useEffect(() => {
         const fetchApplications = async () => {
           try {
-            const data = await GetApplicationsForUser();
+            const data = await getApplicationsForUser();
             setApplications(data);
           } catch (error) {
             console.error('Ошибка при получении данных заявок:', error);

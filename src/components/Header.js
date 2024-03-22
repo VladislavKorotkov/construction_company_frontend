@@ -8,7 +8,7 @@ import { AUTH_ROUTE, HOME_ROUTE, PROFILE_ROUTE } from "../utils/consts";
 import { Button, NavLink } from "react-bootstrap";
 import { observable } from "mobx";
 import { observer } from "mobx-react-lite";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = observer (()=>{
     const {userApp} = useContext(Context)
@@ -22,7 +22,11 @@ const Header = observer (()=>{
     return(
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand href={HOME_ROUTE}><strong>Стройся-ка</strong></Navbar.Brand>
+                <Navbar.Brand>
+                     <Link to={HOME_ROUTE} style={{ color: 'black', textDecoration: 'none' }}>
+                        <strong>Стройся-ка</strong>
+                     </Link>
+                </Navbar.Brand>
                 <Nav className="ml-auto">
                     {userApp.getIsAuth()?
                     <Button variant="primary"  onClick={redirectToProfile}>Личный аккаунт</Button>:

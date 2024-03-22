@@ -3,7 +3,7 @@
   background-color: #ffffff;
   width: 25%;
   height: auto;
-  padding: 5px;
+  padding: 10px;
   padding-top: 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -18,23 +18,23 @@
 }
 
 .sidebar-link {
-  padding: 1px;
+  margin-bottom: 5px;
 }
 
-.nav-link:hover {
-  background-color: #eeeeee;
-}
-
-.sidebar-link .nav-link {
+.sidebar-link .link {
+  display: block;
+  width: 100%;
   color: black;
   font-size: 1rem;
   text-decoration: none;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
-  margin-bottom: 5px;
+  padding: 10px;
 }
 
-.sidebar-link .nav-link .icon {
+.sidebar-link .link .icon {
   margin-right: 5px;
   font-size: 1.2rem;
+}
+.link:hover {
+  background-color: #eeeeee;
 }

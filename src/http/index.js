@@ -27,6 +27,7 @@ $authHost.interceptors.response.use((config) => {
                 jwtRefreshToken: jwtRefreshToken
             });
             localStorage.setItem('accessToken', response.data.accessToken);
+            
             return $authHost.request(originalRequest);
         } catch (e) {
             console.log('НЕ АВТОРИЗОВАН')

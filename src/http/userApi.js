@@ -37,3 +37,9 @@ export const check = async () =>{
         return false
     }
 }
+
+
+export const GetUserInfo = async () =>{
+    const {data} = await $authHost.get('/api/auth/user')
+    return data
+}

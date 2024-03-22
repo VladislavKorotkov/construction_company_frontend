@@ -4,22 +4,29 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { HOME_ROUTE } from "../utils/consts";
-import { Button } from "react-bootstrap";
+import { AUTH_ROUTE, HOME_ROUTE, PROFILE_ROUTE } from "../utils/consts";
+import { Button, NavLink } from "react-bootstrap";
 import { observable } from "mobx";
 import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router-dom";
 
 const Header = observer (()=>{
     const {userApp} = useContext(Context)
+    const navigate = useNavigate()
+    const redirectToAuth = ()=>{
+        navigate(AUTH_ROUTE)
+    }
+    const redirectToProfile = ()=>{
+        navigate(PROFILE_ROUTE)
+    }
     return(
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
                 <Navbar.Brand href={HOME_ROUTE}><strong>Стройся-ка</strong></Navbar.Brand>
                 <Nav className="ml-auto">
                     {userApp.getIsAuth()?
-                    <Button variant="primary">Личный аккаунт</Button>:
-                    <Button variant="primary" href="/login">Авторизация</Button>
-
+                    <Button variant="primary"  onClick={redirectToProfile}>Личный аккаунт</Button>:
+                    <Button variant="primary" onClick={redirectToAuth}>Авторизация</Button>
                 }  
                 </Nav>
         </Container>

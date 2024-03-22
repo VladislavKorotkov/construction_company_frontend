@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Sidebar.css';
 import { Context } from '../..';
 import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
 
 const Sidebar = observer( () => {
   let links;
@@ -49,9 +50,7 @@ const Sidebar = observer( () => {
       <Nav className="flex-column">
         {links.map((link, index) => (
           <NavItem key={index} className="sidebar-link">
-            <Nav.Link href={link.url}>
-              {link.name}
-            </Nav.Link>
+            <Link className='link' to={link.url}>{link.name}</Link>
           </NavItem>
         ))}
       </Nav>

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Accordion, Button, Col, Row } from 'react-bootstrap';
 
-const ApplicationAccordionForForeman = ({ application }) => {
+const ApplicationAccordionForForeman = ({ application, onAccept }) => {
   const handleAccept = () => {
-    // Обработчик для принятия заявки
-    // Можно добавить соответствующую логику здесь
-    console.log("Заявка принята!");
+    try {
+      onAccept()
+    } catch (error) {
+      console.error('Ошибка при принятии заявки:', error);
+    }
   };
 
   return (

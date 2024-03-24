@@ -4,7 +4,7 @@ import { Accordion, Button } from 'react-bootstrap';
 import ApplicationAccordion from '../components/ApplicationAccordion/ApplicationAccordion';
 import { useNavigate } from 'react-router-dom';
 import { APPLICATION_FORM_ROUTE } from '../utils/consts';
-import { deleteApplication, getApplicationsForUser } from '../http/ApplicationApi';
+import { deleteApplication, getApplicationsForForeman, getApplicationsForUser } from '../http/ApplicationApi';
 
 export default function ApplicationsForUser() {
     const [applications, setApplications] = useState([]);
@@ -17,7 +17,6 @@ export default function ApplicationsForUser() {
             console.error('Ошибка при получении данных заявок:', error);
           }
         };
-    
         fetchApplications();
       }, []);
     

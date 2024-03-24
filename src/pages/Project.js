@@ -46,7 +46,6 @@ export default function Project() {
                     status: "Ожидание"
                 }
             ]
-
         }
     return (
         <>

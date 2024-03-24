@@ -1,52 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
 import { Accordion, Button } from 'react-bootstrap';
 import ApplicationAccordionForForeman from '../components/ApplicationAccordionForForeman';
+import { acceptApplication, getApplicationsForForeman } from '../http/ApplicationApi';
+import { useNavigate } from 'react-router-dom';
 
 export default function ApplicationsForForeman() {
-    const applications = [
-        {
-            id: 1,
-            name: "Ремонт квартиры",
-            address: {
-                city: "Минск",
-                street: "Якуба Коласа",
-                numberHouse: "13a"
-            },
-            description: "Речь идет о LЁN. С сегодняшнего дня здесь будет действовать laptop-free-формат: посетителей просят не пользоваться планшетами и ноутбуками."
-        },
-        {
-            id: 2,
-            name: "Ремонт дома",
-            address: {
-                city: "Минск",
-                street: "Якуба Коласа",
-                numberHouse: "13a"
-            },
-            description: "Речь идет о LЁN. С сегодняшнего дня здесь будет действовать laptop-free-формат: посетителей просят не пользоваться планшетами и ноутбуками."
-        },
-        {
-            id: 3,
-            name: "Ремонт санузла",
-            address: {
-                city: "Минск",
-                street: "Якуба Коласа",
-                numberHouse: "13a"
-            },
-            description: "Речь идет о LЁN. С сегодняшнего дня здесь будет действовать laptop-free-формат: посетителей просят не пользоваться планшетами и ноутбуками."
-        },
-        {
-            id: 4,
-            name: "Ремонт кухни",
-            address: {
-                city: "Минск",
-                street: "Якуба Коласа",
-                numberHouse: "13a"
-            },
-            description: "Речь идет о LЁN. С сегодняшнего дня здесь будет действовать laptop-free-формат: посетителей просят не пользоваться планшетами и ноутбуками."
-        },
-       
-    ]
+    const [applications, setApplications] = useState([]);
+    const navigate = useNavigate()
+    useEffect(() => {
+        const fetchApplications = async () => {
+          try {
+            const data = await getApplicationsForForeman();
+            setApplications(data);
+          } catch (error) {
+            console.error('Ошибка при получении данных заявок:', error);
+          }
+        };
+    
+        fetchApplications();
+      }, []);
+
+      const handleAccept = async (applicationId) => {
+        try {
+          const data = await acceptApplication(applicationId);
+          setApplications(applications.filter((item) => item.id !== applicationId));
+          alert(data)
+        } catch (error) {
+          console.error('Ошибка при принятии заявки:', error);
+        }
+      };
+    
     return (
         <>
         <div className="app">
@@ -56,7 +40,7 @@ export default function ApplicationsForForeman() {
                         <h2>Оставленные заявки</h2>
                         <Accordion defaultActiveKey="0" flush>
                             {applications.map((application) => (
-                                <ApplicationAccordionForForeman key={application.id} application={(application)}/>
+                                <ApplicationAccordionForForeman key={application.id} application={(application)} onAccept={() => handleAccept(application.id)}/>
                             ))}
                         </Accordion>
                       </div>

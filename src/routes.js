@@ -54,7 +54,7 @@ export const publicRoutes = [
         Component: Users
     },
     {
-        path: PROJECT_ROUTE,
+        path: PROJECT_ROUTE  + '/:id',
         Component: Project
     },
     {

@@ -5,6 +5,7 @@ export const getProjectsForUser = async () =>{
     return data
 }
 
-// export const postApplication = async(application)=>{
-//     const {data} = await $authHost.post('/api/applications', application)
-// }
+export const getProject = async(id)=>{
+    const {data} = await $authHost.get('/api/projects/'+id)
+    return data
+}

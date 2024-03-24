@@ -1,67 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
 import {Card} from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ProjectInfoCard from '../components/ProjectInfoCard';
 import TaskCard from '../components/TaskCard';
-
+import { useParams } from 'react-router-dom';
+import { getProject } from '../http/ProjectApi';
+import { HOME_ROUTE } from '../utils/consts';
 export default function Project() {
-    const project =
-        {
-            name:"Ремонт квартиры",
-            startDate: "12.12.2023",
-            endDate: "13.12.2023",
-            address: {
-                city: "Минск",
-                street: "Якуба Коласа",
-                numberHouse: "12a",
-            },
-            description: "Речь идет о LЁN. С сегодняшнего дня здесь будет действовать laptop-free-формат: посетителей просят не пользоваться планшетами и ноутбуками.",
-            builderName: "Вовка Вовкин",
-            isCompleted: true,
-            cost: 123,
-            tasks:[
-                {
-                    id: 1,
-                    name: "Укладка плитки",
-                    builderName: "Вовчан Вовкин",
-                    status: "Ожидание"
-                },
-                {
-                    id: 2,
-                    name: "Укладка проводки",
-                    builderName: "Вовчан Вовкин",
-                    status: "В процессе"
-                },
-                {
-                    id: 3,
-                    name: "Укладка плитки",
-                    builderName: "Вовчан Вовкин",
-                    status: "Завершено"
-                },
-                {
-                    id: 4,
-                    name: "Укладка плитки",
-                    builderName: "Вовчан Вовкин",
-                    status: "Ожидание"
-                }
-            ]
-        }
+    const {id} = useParams()
+    const [project, setProject] = useState(null)
+    const navigate = useNavigate()
+    useEffect(() => {
+        const fetchProjectData = async () => {
+          try {
+            const data = await getProject(id);
+            setProject(data);
+          } catch (error) {
+          }
+        };
+        fetchProjectData();
+      }, [id]);
+    
     return (
         <>
         <div className="app">
               <Layout>
                   <div className="d-flex justify-content-center" style={{ minHeight: '100vh'}}>
                       <div style={{ width: '90%', maxWidth:'100%' }}>
-                        <ProjectInfoCard project={project} flag={true}/>
-                        <h2>Задачи</h2>
-                        {project.tasks.map((task) => (
+                        {project && <ProjectInfoCard project={project}/>}
+                        {project && <>
+                            <h2>Задачи</h2>
+                             {project.tasks.map((task) => (
                                 <TaskCard key={task.id} task={(task)} />
                             ))}
+                        </>}
+                        
                       </div>
                   </div>
               </Layout>
            </div>
-       </>
+        </>
     )
 }

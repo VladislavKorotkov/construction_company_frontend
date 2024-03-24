@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import projectImage from "../img/project.png"
 import Completed from './Completed';
+import { observer } from 'mobx-react-lite';
+import { Context } from '..';
 
-const ProjectInfoCard = ({ project, flag}) => {
+const ProjectInfoCard = observer (({ project}) => {
+  const {userApp} = useContext(Context)
   return (
     <Card className="w-100">
       <Card.Body className="text-center" style={{padding: '2rem'}}>
@@ -18,20 +21,18 @@ const ProjectInfoCard = ({ project, flag}) => {
         </div>
 
         <Card.Text> <strong>Адрес: </strong> {project.address.city+ ", " + project.address.street + ", " + project.address.numberHouse}</Card.Text>
-        <Card.Text><strong>Описание: </strong>  {project.description}</Card.Text>
         <Card.Text><strong>Ответственный:</strong> {project.builderName}</Card.Text>
         <Card.Text><strong>Общая стоимость:</strong> {project.cost} р.</Card.Text>
 
         <div className="d-flex justify-content-center">
           <Button variant="primary" className="mx-2">Скачать смету</Button>
           <Button variant="primary" className="mx-2">Скачать договор</Button>
-          {project.isCompleted&&flag==true?<Button variant="success" className="mx-2">Оставить отзыв</Button>:null}
+          {project.isCompleted&&userApp.getRole()=="ROLE_USER"?<Button variant="success" className="mx-2">Оставить отзыв</Button>:null}
           
         </div>
 
       </Card.Body>
     </Card>
   );
-};
-
+})
 export default ProjectInfoCard;

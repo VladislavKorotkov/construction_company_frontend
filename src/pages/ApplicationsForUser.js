@@ -4,7 +4,7 @@ import { Accordion, Button } from 'react-bootstrap';
 import ApplicationAccordion from '../components/ApplicationAccordion/ApplicationAccordion';
 import { useNavigate } from 'react-router-dom';
 import { APPLICATION_FORM_ROUTE } from '../utils/consts';
-import { getApplicationsForUser } from '../http/ApplicationApi';
+import { deleteApplication, getApplicationsForUser } from '../http/ApplicationApi';
 
 export default function ApplicationsForUser() {
     const [applications, setApplications] = useState([]);
@@ -25,6 +25,16 @@ export default function ApplicationsForUser() {
     const handleCreateApp=()=>{
         navigate(APPLICATION_FORM_ROUTE)
     }
+
+    const handleDelete = async (applicationId) => {
+      try {
+        const data = await deleteApplication(applicationId);
+        setApplications(applications.filter((item) => item.id !== applicationId));
+        alert(data)
+      } catch (error) {
+        console.error('Ошибка при удалении заявки:', error);
+      }
+    };
     return (
         <>
         <div className="app">
@@ -37,7 +47,7 @@ export default function ApplicationsForUser() {
                 </Button>
                 <Accordion defaultActiveKey="0" flush>
                   {applications.map((application) => (
-                    <ApplicationAccordion key={application.id} application={application} />
+                    <ApplicationAccordion key={application.id} application={application} onDelete={() => handleDelete(application.id)} />
                   ))}
                 </Accordion>
               </div>

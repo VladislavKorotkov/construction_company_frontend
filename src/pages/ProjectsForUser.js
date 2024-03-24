@@ -1,30 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
 import {Card} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
+import { getProjectsForUser } from '../http/ProjectApi';
 
 export default function ProjectsForUser() {
-    const projects = [
-        {
-            id: 1,
-            name: "Ремонт квартиры",
-            dateOfCreation: "12.02.2023",
-            isCompleted: false
-        },
-        {
-            id: 2,
-            name: "Ремонт квартиры",
-            dateOfCreation: "12.02.2023",
-            isCompleted: false
-        },
-        {
-            id: 3,
-            name: "Ремонт дома",
-            dateOfCreation: "12.02.2023",
-            isCompleted: true
-        }
-    ]
+    const [projects, setProject] = useState([]);
+    useEffect(() => {
+        const fetchProjects = async () => {
+          try {
+            const data = await getProjectsForUser();
+            setProject(data);
+          } catch (error) {
+            console.error('Ошибка при получении данных проектов:', error);
+          }
+        };
+        fetchProjects();
+      }, []);
     return (
         <>
         <div className="app">

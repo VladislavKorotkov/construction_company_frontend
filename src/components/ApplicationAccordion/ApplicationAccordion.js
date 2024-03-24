@@ -1,7 +1,18 @@
 import React from 'react';
 import { Accordion, Button, Col, Row } from 'react-bootstrap';
+import { deleteApplication } from '../../http/ApplicationApi';
+import { useNavigate } from 'react-router-dom';
+import { APPLICATIONS_ROUTE } from '../../utils/consts';
 
-const ApplicationAccordion = ({ application }) => {
+const ApplicationAccordion = ({ application, onDelete}) => {
+  const handleDelete = async() => {
+    try {
+      onDelete()
+    } catch (error) {
+      console.error('Ошибка при удалении заявки:', error);
+    }
+    
+  };
   return (
     <Accordion.Item eventKey={application.id}>
     <Accordion.Header>{application.name}</Accordion.Header>
@@ -22,6 +33,9 @@ const ApplicationAccordion = ({ application }) => {
             </p>
             </Col>
         </Row>
+        <Button variant="danger" onClick={handleDelete}>
+          Удалить
+        </Button>
     </Accordion.Body>
   </Accordion.Item>
   );

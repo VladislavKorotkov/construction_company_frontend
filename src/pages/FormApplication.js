@@ -65,6 +65,7 @@ export default function FormApplication() {
               required
               name = "name"
               value={application.name} 
+              maxLength={30}
               onChange={handleChange}
             />
             <label htmlFor="floatingNameCustom">Название заявки</label>
@@ -77,6 +78,7 @@ export default function FormApplication() {
                 placeholder="City"
                 name = "city"
                 required
+                maxLength={30}
                 value={application.address.city}
                  onChange={handleAddressChange}
               />
@@ -89,6 +91,7 @@ export default function FormApplication() {
                 placeholder="Street"
                 name = "street"
                 required
+                maxLength={30}
                 value={application.address.street}
                  onChange={handleAddressChange}
               />
@@ -101,6 +104,7 @@ export default function FormApplication() {
                 placeholder="NumberHouse"
                 required
                 name = "numberHouse"
+                maxLength={30}
                 value={application.address.numberHouse}
                  onChange={handleAddressChange}
               />
@@ -113,6 +117,7 @@ export default function FormApplication() {
                 placeholder="Description"
                 style={{ height: '100px', resize: 'none' }}
                 required
+                maxLength={100}
                 name = "description"
                 value={application.description} 
                 onChange={handleChange}

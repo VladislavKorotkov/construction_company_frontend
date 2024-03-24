@@ -8,3 +8,8 @@ export const getApplicationsForUser = async () =>{
 export const postApplication = async(application)=>{
     const {data} = await $authHost.post('/api/applications', application)
 }
+
+export const deleteApplication = async(id)=>{
+    const {data} = await $authHost.delete('/api/applications/' + id)
+    return data;
+}

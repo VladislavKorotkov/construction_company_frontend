@@ -1,39 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
 import {Button} from 'react-bootstrap'
 import UsersTable from '../components/UsersTable/UsersTable';
+import { getUsers } from '../http/userApi';
 
 
 const Users = () => {
-    const users = [
-        {
-            id: 1,
-            username: "vlad@mail",
-            role: "Админ",
-            name: "Вовка",
-            surname: "Вовкин",
-            phoneNumber: "+375292909202",
-            isBlocked: true
-        },
-        {
-            id: 2,
-            username: "vlad@mail",
-            role: "Админ",
-            name: "Вовка",
-            surname: "Вовкин",
-            phoneNumber: "+375292909202",
-            isBlocked: true
-        },
-        {
-            id: 3,
-            username: "vladsdsdfdf@mail",
-            role: "Админ",
-            name: "Вовка",
-            surname: "Вовкин",
-            phoneNumber: "+375292909202",
-            isBlocked: false
+    const [users, setUsers] = useState([])
+    useEffect(() => {
+        const fetchUsers = async () => {
+          try {
+            const data = await getUsers();
+            setUsers(data);
+          } catch (error) {
+            console.error('Ошибка при получении данных пользователей:', error);
+          }
+        };
+        fetchUsers();
+      }, []);
+
+      const handleDelete = async (applicationId) => {
+        try {
+          //const data = await deleteApplication(applicationId);
+          //setApplications(applications.filter((item) => item.id !== applicationId));
+          alert(data)
+        } catch (error) {
+          console.error('Ошибка при удалении заявки:', error);
         }
-    ]
+      };
   return (
     <>
       <div className="app">

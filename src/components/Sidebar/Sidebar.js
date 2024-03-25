@@ -16,7 +16,7 @@ const Sidebar = observer( () => {
     heading = 'Администратор';
     links = [
       { name: 'Профиль', url: PROFILE_ROUTE, icon: 'bi bi-person' },
-      { name: 'Пользователи', url: USERS_ROUTE, icon: 'bi bi-people' },
+      { name: 'Аккаунты', url: USERS_ROUTE, icon: 'bi bi-people' },
       { name: 'Проекты', url: PROJECTS_ROUTE, icon: 'bi bi-folder' },
     ];
   } else if (userApp.getRole() === 'ROLE_USER') {

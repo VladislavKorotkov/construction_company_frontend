@@ -43,3 +43,8 @@ export const GetUserInfo = async () =>{
     const {data} = await $authHost.get('/api/auth/user')
     return data
 }
+
+export const getUsers = async () =>{
+    const {data} = await $authHost.get("/api/auth/users")
+    return data;
+}

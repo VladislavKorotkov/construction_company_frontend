@@ -5,7 +5,7 @@ import Completed from './Completed';
 import { observer } from 'mobx-react-lite';
 import { Context } from '..';
 
-const ProjectInfoCard = observer (({ project, onDownloadXlsx}) => {
+const ProjectInfoCard = observer (({ project, onDownloadXlsx, onDownloadContract}) => {
   const {userApp} = useContext(Context)
   return (
     <Card className="w-100">
@@ -26,7 +26,7 @@ const ProjectInfoCard = observer (({ project, onDownloadXlsx}) => {
 
         <div className="d-flex justify-content-center">
           <Button variant="primary" className="mx-2" onClick={onDownloadXlsx}>Скачать смету</Button>
-          <Button variant="primary" className="mx-2" >Скачать договор</Button>
+          <Button variant="primary" className="mx-2" onClick={onDownloadContract}>Скачать договор</Button>
           {project.isCompleted&&userApp.getRole()=="ROLE_USER"?<Button variant="success" className="mx-2">Оставить отзыв</Button>:null}
           
         </div>

@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ProjectInfoCard from '../components/ProjectInfoCard';
 import TaskCard from '../components/TaskCard';
 import { useParams } from 'react-router-dom';
-import { getEstimateXlsx, getProject } from '../http/ProjectApi';
+import { getContract, getEstimateXlsx, getProject } from '../http/ProjectApi';
 import { HOME_ROUTE } from '../utils/consts';
 export default function Project() {
     const {id} = useParams()
@@ -29,6 +29,15 @@ export default function Project() {
           console.error('Ошибка скачивания:', error);
         }
       };
+
+      const handleDownloadContract = async () => {
+        try {
+          await getContract(id);
+        } catch (error) {
+          console.error('Ошибка скачивания:', error);
+        }
+      };
+    
     
     return (
         <>
@@ -36,7 +45,7 @@ export default function Project() {
               <Layout>
                   <div className="d-flex justify-content-center" style={{ minHeight: '100vh'}}>
                       <div style={{ width: '90%', maxWidth:'100%' }}>
-                        {project && <ProjectInfoCard project={project} onDownloadXlsx={handleDownloadXlsx}/>}
+                        {project && <ProjectInfoCard project={project} onDownloadXlsx={handleDownloadXlsx} onDownloadContract={handleDownloadContract}/>}
                         {project && <>
                             <h2>Задачи</h2>
                              {project.tasks.map((task) => (

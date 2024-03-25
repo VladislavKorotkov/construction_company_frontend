@@ -22,7 +22,22 @@ export const getEstimateXlsx = async(id)=>{
         document.body.appendChild(link);
         link.click();
       } catch (error) {
-        // Обработка ошибок при скачивании файла
-        console.error('Error downloading file:', error);
+        console.error('Ошибка скачивания файла:', error);
       }
+}
+
+export const getContract = async(id)=>{
+  try {
+      const response = await $authHost.get(`/api/projects/${id}/contract`, {
+        responseType: 'blob',
+      });
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'contract.docx');
+      document.body.appendChild(link);
+      link.click();
+    } catch (error) {
+      alert('Ошибка скачивания файла');
+    }
 }

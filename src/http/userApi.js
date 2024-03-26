@@ -48,3 +48,8 @@ export const getUsers = async () =>{
     const {data} = await $authHost.get("/api/auth/users")
     return data;
 }
+
+export const blockUser = async(userId)=>{
+    const {data} = await $authHost.put("/api/auth/blocking-user/"+userId)
+    return data
+}

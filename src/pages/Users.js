@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
 import {Button} from 'react-bootstrap'
 import UsersTable from '../components/UsersTable/UsersTable';
-import { getUsers } from '../http/userApi';
+import { blockUser, getUsers } from '../http/userApi';
 
 
 const Users = () => {
@@ -19,15 +19,26 @@ const Users = () => {
         fetchUsers();
       }, []);
 
-      const handleDelete = async (applicationId) => {
+
+      const toggleBlock = async (userId) => {
         try {
-          //const data = await deleteApplication(applicationId);
-          //setApplications(applications.filter((item) => item.id !== applicationId));
-          alert(data)
+          const {data} = await blockUser(userId)
+          setUsers(prevUsers =>
+            prevUsers.map(user => {
+              if (user.id === userId) {
+                return {
+                  ...user,
+                  isBlocked: !user.isBlocked
+                };
+              }
+              return user;
+      })
+    );
         } catch (error) {
-          console.error('Ошибка при удалении заявки:', error);
+          alert(error.response.data)
         }
       };
+
   return (
     <>
       <div className="app">
@@ -36,7 +47,7 @@ const Users = () => {
                     <div style={{  width: '90%', maxWidth:'100%' }}>
                     <h2>Аккаунты</h2>
                     <Button href="/application/add" className="my-3">Добавить новый аккаунт</Button>
-                        <UsersTable users={users}></UsersTable>
+                        <UsersTable users={users} setUsers={setUsers} onToggleBlock={toggleBlock}></UsersTable>
                     </div>
                 </div>
             </Layout>

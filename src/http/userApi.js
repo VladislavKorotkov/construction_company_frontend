@@ -7,6 +7,12 @@ export const registration = async (username, password, name, surname, phoneNumbe
     return data
 }
 
+export const createAccount = async (username, password, name, surname, phoneNumber) =>{
+    const {data} = await $host.post('/api/auth/register', {username, password, name, surname, phoneNumber})
+
+    return data
+}
+
 export const login = async (username, password) =>{
     const {data} = await $host.post('/api/auth/login', {username, password})
     localStorage.setItem('accessToken', data.accessToken)

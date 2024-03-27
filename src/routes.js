@@ -3,6 +3,7 @@ import ApplicationsForForeman from "./pages/ApplicationsForForeman";
 import ApplicationsForUser from "./pages/ApplicationsForUser";
 import Auth from "./pages/Auth";
 import FormApplication from "./pages/FormApplication";
+import FormUser from "./pages/FormUser";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Project from "./pages/Project";
@@ -10,7 +11,7 @@ import ProjectManagment from "./pages/ProjectManagment";
 import ProjectsForUser from "./pages/ProjectsForUser";
 import Register from "./pages/Register";
 import Users from "./pages/Users";
-import { ADMIN_ROUTE, APPLICATIONS_AVAILABLE_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, HOME_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, PROJECT_MANAGMENT_ROUTE, PROJECT_ROUTE, REGISTER_ROUTE, USERS_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, APPLICATIONS_AVAILABLE_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, HOME_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, PROJECT_MANAGMENT_ROUTE, PROJECT_ROUTE, REGISTER_ROUTE, USERS_ROUTE, USER_FORM_ROUTE } from "./utils/consts";
 
 export const authRoutes = [
     {
@@ -65,4 +66,9 @@ export const publicRoutes = [
         path: PROJECT_MANAGMENT_ROUTE,
         Component: ProjectManagment
     },
+    {
+        path: USER_FORM_ROUTE,
+        Component: FormUser
+    },
+
 ]

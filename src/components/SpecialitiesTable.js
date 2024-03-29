@@ -19,7 +19,7 @@ const SpecialitiesTable = ({ specialities, onUpdate}) => {
                 <Button variant='warning' onClick={() => onUpdate(speciality.id)}>
                   Изменить
                 </Button>
-                <Button variant='danger' onClick={() => onUpdate(speciality.id)}>
+                <Button variant='danger' className='ms-2' onClick={() => onUpdate(speciality.id)}>
                   Удалить
                 </Button>
               </td>
@@ -30,4 +30,4 @@ const SpecialitiesTable = ({ specialities, onUpdate}) => {
     );
   };
   
-  export default UsersTable;
+  export default SpecialitiesTable;

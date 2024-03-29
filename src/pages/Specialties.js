@@ -6,6 +6,7 @@ import { blockUser, getUsers } from '../http/userApi';
 import { useNavigate } from 'react-router-dom';
 import { USER_FORM_ROUTE } from '../utils/consts';
 import { getSpecialities } from '../http/SpecialitiesApi';
+import SpecialitiesTable from '../components/SpecialitiesTable';
 
 
 const Specialities = () => {
@@ -20,7 +21,7 @@ const Specialities = () => {
             console.error('Ошибка при получении данных специальностей:', error);
           }
         };
-        fetchUsers();
+        fetchSpecialities();
       }, []);
 
       const handleCreateSpeciality=()=>{
@@ -54,9 +55,9 @@ const Specialities = () => {
             <Layout>
                 <div className="d-flex justify-content-center" style={{ minHeight: '100vh' }}>
                     <div style={{  width: '90%', maxWidth:'100%' }}>
-                    <h2>Аккаунты</h2>
-                    <Button onClick={handleCreateUser} className="my-3">Добавить новый аккаунт</Button>
-                        <UsersTable users={users} setUsers={setUsers} onToggleBlock={toggleBlock}></UsersTable>
+                    <h2>Специальности</h2>
+                    <Button onClick={handleCreateSpeciality} className="my-3">Добавить новую специальность</Button>
+                        <SpecialitiesTable specialities={specialities} setSpecialities={setSpecialities} onUpdate={handleUpdate}></SpecialitiesTable>
                     </div>
                 </div>
             </Layout>

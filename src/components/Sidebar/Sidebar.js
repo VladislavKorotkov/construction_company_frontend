@@ -18,6 +18,7 @@ const Sidebar = observer( () => {
       { name: 'Профиль', url: PROFILE_ROUTE, icon: 'bi bi-person' },
       { name: 'Аккаунты', url: USERS_ROUTE, icon: 'bi bi-people' },
       { name: 'Проекты', url: PROJECTS_ROUTE, icon: 'bi bi-folder' },
+      { name: 'Специальности', url: PROJECTS_ROUTE, icon: 'bi bi-folder' },
     ];
   } else if (userApp.getRole() === 'ROLE_USER') {
     heading = 'Пользователь';

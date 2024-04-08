@@ -1,4 +1,6 @@
 import axios from "axios";
+import { useContext } from "react";
+import { Context } from "..";
 
 const $host= axios.create({
     baseURL: process.env.REACT_APP_API_URL
@@ -27,13 +29,17 @@ $authHost.interceptors.response.use((config) => {
                 jwtRefreshToken: jwtRefreshToken
             });
             localStorage.setItem('accessToken', response.data.accessToken);
-            
             return $authHost.request(originalRequest);
         } catch (e) {
             console.log('НЕ АВТОРИЗОВАН')
+            localStorage.clear()
+            const {userApp} = useContext(Context)
+            userApp.setUser(false)
+            userApp.setIsAuth(false)
+            userApp.setRole(false)
         }
     }
-    throw error;
+    // throw error;
 })
 
 export{

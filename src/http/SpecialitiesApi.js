@@ -9,3 +9,8 @@ export const addSpeciality = async (name) =>{
     const {data} = await $authHost.post('/api/specializations', {name: name})
     return data;
 }
+
+export const deleteSpeciality = async (id) => {
+    const {data} = await $authHost.delete("/api/specializations/" + id)
+    return data;
+}

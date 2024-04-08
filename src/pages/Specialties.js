@@ -5,7 +5,7 @@ import UsersTable from '../components/UsersTable/UsersTable';
 import { blockUser, getUsers } from '../http/userApi';
 import { useNavigate } from 'react-router-dom';
 import { SPECIALITIES_FORM_ROUTE, USER_FORM_ROUTE } from '../utils/consts';
-import { getSpecialities } from '../http/SpecialitiesApi';
+import { deleteSpeciality, getSpecialities } from '../http/SpecialitiesApi';
 import SpecialitiesTable from '../components/SpecialitiesTable';
 
 
@@ -27,6 +27,16 @@ const Specialities = () => {
       const handleCreateSpeciality=()=>{
         navigate(SPECIALITIES_FORM_ROUTE)
       }
+
+      const handleDelete = async (specialityId) => {
+        try {
+          const data = await deleteSpeciality(specialityId);
+          setSpecialities(specialities.filter((item) => item.id !== specialityId));
+          alert(data)
+        } catch (error) {
+          alert('Ошибка при удалении специальности');
+        }
+      };
 
 
 
@@ -57,7 +67,7 @@ const Specialities = () => {
                     <div style={{  width: '90%', maxWidth:'100%' }}>
                     <h2>Специальности</h2>
                     <Button onClick={handleCreateSpeciality} className="my-3">Добавить новую специальность</Button>
-                        <SpecialitiesTable specialities={specialities} setSpecialities={setSpecialities} onUpdate={handleUpdate}></SpecialitiesTable>
+                        <SpecialitiesTable specialities={specialities} setSpecialities={setSpecialities} onUpdate={handleUpdate} onDelete={handleDelete}></SpecialitiesTable>
                     </div>
                 </div>
             </Layout>

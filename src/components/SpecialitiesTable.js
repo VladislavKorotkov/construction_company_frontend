@@ -1,6 +1,6 @@
 import {Table, Button} from 'react-bootstrap'
 
-const SpecialitiesTable = ({ specialities, onUpdate}) => {
+const SpecialitiesTable = ({ specialities, onUpdate, onDelete}) => {
     return (
         <Table striped bordered hover>
         <thead>
@@ -19,7 +19,7 @@ const SpecialitiesTable = ({ specialities, onUpdate}) => {
                 {/* <Button variant='warning' onClick={() => onUpdate(speciality.id)}>
                   Изменить
                 </Button> */}
-                <Button variant='danger' className='ms-2' onClick={() => onUpdate(speciality.id)}>
+                <Button variant='danger' className='ms-2' onClick={() => onDelete(speciality.id)}>
                   Удалить
                 </Button>
               </td>

@@ -16,9 +16,9 @@ const SpecialitiesTable = ({ specialities, onUpdate}) => {
               <td>{speciality.id}</td>
               <td>{speciality.name}</td>
               <td>
-                <Button variant='warning' onClick={() => onUpdate(speciality.id)}>
+                {/* <Button variant='warning' onClick={() => onUpdate(speciality.id)}>
                   Изменить
-                </Button>
+                </Button> */}
                 <Button variant='danger' className='ms-2' onClick={() => onUpdate(speciality.id)}>
                   Удалить
                 </Button>

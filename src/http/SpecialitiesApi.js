@@ -6,6 +6,6 @@ export const getSpecialities = async () =>{
 }
 
 export const addSpeciality = async (name) =>{
-    const {data} = await $authHost.post('/api/spicializations', name)
+    const {data} = await $authHost.post('/api/specializations', {name: name})
     return data;
 }

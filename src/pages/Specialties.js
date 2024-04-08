@@ -4,7 +4,7 @@ import {Button} from 'react-bootstrap'
 import UsersTable from '../components/UsersTable/UsersTable';
 import { blockUser, getUsers } from '../http/userApi';
 import { useNavigate } from 'react-router-dom';
-import { USER_FORM_ROUTE } from '../utils/consts';
+import { SPECIALITIES_FORM_ROUTE, USER_FORM_ROUTE } from '../utils/consts';
 import { getSpecialities } from '../http/SpecialitiesApi';
 import SpecialitiesTable from '../components/SpecialitiesTable';
 
@@ -25,7 +25,7 @@ const Specialities = () => {
       }, []);
 
       const handleCreateSpeciality=()=>{
-        navigate(USER_FORM_ROUTE)
+        navigate(SPECIALITIES_FORM_ROUTE)
       }
 
 

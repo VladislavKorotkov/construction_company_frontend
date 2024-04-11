@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Card, Form, Button } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { AUTH_ROUTE, REGISTER_ROUTE } from '../utils/consts';
+import { AUTH_ROUTE, REGISTER_ROUTE, USERS_ROUTE } from '../utils/consts';
 import { registration } from '../http/userApi';
 
 export default function FormUser() {
@@ -17,7 +17,8 @@ export default function FormUser() {
         event.preventDefault();
         try{
             const data = await registration(email, password, name, surname, phoneNumber)
-            navigate(AUTH_ROUTE)
+            navigate(USERS_ROUTE)
+            // TODO Допилить надо 
         }
         catch (error) {
             if (error.response && error.response.data) {

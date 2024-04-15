@@ -2,7 +2,7 @@
 import { $authHost, $host } from ".";
 
 export const getMaterials = async () =>{
-    const {data} = await $authHost.get('/api/materials/available')
+    const {data} = await $authHost.get('/api/materials')
     return data
 }
 export const addMaterial = async (material) =>{

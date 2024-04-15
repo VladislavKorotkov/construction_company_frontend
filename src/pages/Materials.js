@@ -67,7 +67,7 @@ const Materials = () => {
             <Layout>
                 <div className="d-flex justify-content-center" style={{ minHeight: '100vh' }}>
                     <div style={{  width: '90%', maxWidth:'100%' }}>
-                    <h2>Специальности</h2>
+                    <h2>Материалы</h2>
                     <Button onClick={handleCreateMaterial} className="my-3">Добавить новый материал</Button>
                         <MaterialsTable materials={materials} setMaterials={setMaterials} onUpdate={handleUpdate} onDelete={handleDelete}></MaterialsTable>
                     </div>

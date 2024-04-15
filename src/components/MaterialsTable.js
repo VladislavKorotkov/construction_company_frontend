@@ -8,7 +8,7 @@ const MaterialsTable = ({ materials, onUpdate, onDelete}) => {
             <th>ID</th>
             <th>Название</th>
             <th>Цена</th>
-            <th>Доступен</th>
+            <th>Статус</th>
             <th>Действие</th>
           </tr>
         </thead>
@@ -18,7 +18,7 @@ const MaterialsTable = ({ materials, onUpdate, onDelete}) => {
               <td>{material.id}</td>
               <td>{material.name}</td>
               <td>{material.cost}</td>
-              <td>{material.isAvailable?"Да": "Нет"}</td>
+              <td>{material.isAvailable?"Доступен": "Не доступен"}</td>
               <td>
                 <Button variant='warning' onClick={() => onUpdate(material.id)}>
                   Изменить

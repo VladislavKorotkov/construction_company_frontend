@@ -3,7 +3,7 @@ import { Container, Card, Form, Button, FloatingLabel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { MATERIAL_ROUTE } from '../utils/consts';
 import { addMaterial } from '../http/MaterialsApi';
-import { unitMaterialData } from '../utils/UnitMaterials';
+import { unitMaterialData } from '../utils/unitMaterials';
 
 export default function FormMaterial() {
     const [material, setMaterials] = useState({

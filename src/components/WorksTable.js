@@ -8,7 +8,7 @@ const WorksTable = ({ works, onUpdate, onDelete}) => {
             <th>ID</th>
             <th>Название</th>
             <th>Цена</th>
-            <th>Доступен</th>
+            <th>Статус</th>
             <th>Действие</th>
           </tr>
         </thead>
@@ -18,7 +18,7 @@ const WorksTable = ({ works, onUpdate, onDelete}) => {
               <td>{work.id}</td>
               <td>{work.name}</td>
               <td>{work.cost}</td>
-              <td>{work.isAvailable?"Да": "Нет"}</td>
+              <td>{work.isAvailable?"Доступна": "Не доступна"}</td>
               <td>
                 <Button variant='warning' onClick={() => onUpdate(work.id)}>
                   Изменить

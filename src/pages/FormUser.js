@@ -3,6 +3,7 @@ import { Container, Card, Form, Button } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AUTH_ROUTE, REGISTER_ROUTE, USERS_ROUTE } from '../utils/consts';
 import { registration } from '../http/userApi';
+import { rolesData } from '../utils/roles';
 
 export default function FormUser() {
     const [email, setEmail] = useState('');
@@ -99,10 +100,9 @@ export default function FormUser() {
                     <Form.Group className="mb-3">
                         <Form.Label>Роль пользователя</Form.Label>
                         <Form.Select value={role} onChange={(event) => setRole(event.target.value)}>
-                        <option value="ROLE_USER">Пользователь</option>
-                        <option value="ROLE_ADMIN">Администратор</option>
-                        <option value="ROLE_BUILDER">Строитель</option>
-                        <option value="ROLE_FOREMAN">Бригадир</option>
+                        {rolesData.map((role) => (
+                                <option key={role.value} value={role.value}>{role.label}</option>
+                            ))}
                         </Form.Select>
                     </Form.Group>
                     <div className="text-center">

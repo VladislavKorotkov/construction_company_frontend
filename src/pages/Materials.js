@@ -4,9 +4,11 @@ import {Button} from 'react-bootstrap'
 import UsersTable from '../components/UsersTable/UsersTable';
 import { blockUser, getUsers } from '../http/userApi';
 import { useNavigate } from 'react-router-dom';
-import { SPECIALITIES_FORM_ROUTE, USER_FORM_ROUTE } from '../utils/consts';
+import { MATERIAL_FORM_ROUTE, SPECIALITIES_FORM_ROUTE, USER_FORM_ROUTE } from '../utils/consts';
 import { deleteSpeciality, getSpecialities } from '../http/SpecialitiesApi';
 import SpecialitiesTable from '../components/SpecialitiesTable';
+import { deleteMaterial, getMaterials } from '../http/MaterialsApi';
+import MaterialsTable from '../components/MaterialsTable';
 
 
 const Materials = () => {
@@ -15,7 +17,7 @@ const Materials = () => {
     useEffect(() => {
         const fetchMaterials = async () => {
           try {
-            const data = await getSpecialities();
+            const data = await getMaterials();
             setMaterials(data);
           } catch (error) {
             console.error('Ошибка при получении данных материалов:', error);
@@ -25,12 +27,12 @@ const Materials = () => {
       }, []);
 
       const handleCreateMaterial=()=>{
-        navigate(SPECIALITIES_FORM_ROUTE)
+        navigate(MATERIAL_FORM_ROUTE)
       }
 
       const handleDelete = async (materialId) => {
         try {
-          const data = await deleteSpeciality(materialId);
+          const data = await deleteMaterial(materialId);
           setMaterials(materials.filter((item) => item.id !== materialId));
           alert(data)
         } catch (error) {
@@ -66,8 +68,8 @@ const Materials = () => {
                 <div className="d-flex justify-content-center" style={{ minHeight: '100vh' }}>
                     <div style={{  width: '90%', maxWidth:'100%' }}>
                     <h2>Специальности</h2>
-                    <Button onClick={handleCreateSpeciality} className="my-3">Добавить новую специальность</Button>
-                        <SpecialitiesTable specialities={specialities} setSpecialities={setSpecialities} onUpdate={handleUpdate} onDelete={handleDelete}></SpecialitiesTable>
+                    <Button onClick={handleCreateMaterial} className="my-3">Добавить новый материал</Button>
+                        <MaterialsTable materials={materials} setMaterials={setMaterials} onUpdate={handleUpdate} onDelete={handleDelete}></MaterialsTable>
                     </div>
                 </div>
             </Layout>
@@ -77,4 +79,4 @@ const Materials = () => {
   );
 };
 
-export default Specialities;
+export default Materials;

@@ -13,8 +13,9 @@ import ProjectsForUser from "./pages/ProjectsForUser";
 import Register from "./pages/Register";
 import Specialities from "./pages/Specialties";
 import Users from "./pages/Users";
-import { ADMIN_ROUTE, APPLICATIONS_AVAILABLE_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, HOME_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, PROJECT_MANAGMENT_ROUTE, PROJECT_ROUTE, REGISTER_ROUTE, SPECIALITIES_FORM_ROUTE, SPECIALITIES_ROUTE, USERS_ROUTE, USER_FORM_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, APPLICATIONS_AVAILABLE_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, HOME_ROUTE, MATERIAL_FORM_ROUTE, MATERIAL_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, PROJECT_MANAGMENT_ROUTE, PROJECT_ROUTE, REGISTER_ROUTE, SPECIALITIES_FORM_ROUTE, SPECIALITIES_ROUTE, USERS_ROUTE, USER_FORM_ROUTE } from "./utils/consts";
 import FormSpeciality from "./pages/FormSpecilaity";
+import Materials from "./pages/Materials";
 
 export const authRoutes = [
     {
@@ -80,6 +81,10 @@ export const publicRoutes = [
     {
         path: SPECIALITIES_FORM_ROUTE,
         Component: FormSpeciality
-    }
+    },
+    {
+        path: MATERIAL_ROUTE,
+        Component: Materials
+    },
 
 ]

@@ -51,3 +51,8 @@ export const getContract = async(id)=>{
       alert('Ошибка скачивания файла');
     }
 }
+
+export const getProjectEstimate = async(id)=>{
+  const {data} = await $authHost.get('/api/projects/'+id +'/estimate')
+  return data
+}

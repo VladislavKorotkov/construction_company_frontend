@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
 import {Card} from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,10 +7,14 @@ import TaskCard from '../components/TaskCard';
 import { useParams } from 'react-router-dom';
 import { getContract, getEstimateXlsx, getProject } from '../http/ProjectApi';
 import { HOME_ROUTE } from '../utils/consts';
-export default function Project() {
+import { observer } from 'mobx-react-lite';
+import { Context } from '..';
+import ProjectManageCard from '../components/ProjectManageCard';
+
+const Project = observer(()=>{
     const {id} = useParams()
     const [project, setProject] = useState(null)
-    const navigate = useNavigate()
+    const {userApp} = useContext(Context)
     useEffect(() => {
         const fetchProjectData = async () => {
           try {
@@ -46,12 +50,18 @@ export default function Project() {
                   <div className="d-flex justify-content-center" style={{ minHeight: '100vh'}}>
                       <div style={{ width: '90%', maxWidth:'100%' }}>
                         {project && <ProjectInfoCard project={project} onDownloadXlsx={handleDownloadXlsx} onDownloadContract={handleDownloadContract}/>}
-                        {project && <>
+                        {userApp.getRole()==="ROLE_FOREMAN"?
+                        <>
+                        <ProjectManageCard projectId={id}></ProjectManageCard>
+                        </>:
+                          project && <>
                             <h2>Задачи</h2>
-                             {project.tasks.map((task) => (
+                            {project.tasks.map((task) => (
                                 <TaskCard key={task.id} task={(task) }  />
                             ))}
-                        </>}
+                        </>
+                        }
+                        
                         
                       </div>
                   </div>
@@ -59,4 +69,6 @@ export default function Project() {
            </div>
         </>
     )
-}
+})
+
+export default Project;

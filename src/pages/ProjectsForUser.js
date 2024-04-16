@@ -1,16 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
 import {Card} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
-import { getProjectsForUser } from '../http/ProjectApi';
-
-export default function ProjectsForUser() {
+import { getProjectsForAdmin, getProjectsForForeman, getProjectsForUser } from '../http/ProjectApi';
+import { observer } from 'mobx-react-lite';
+import { Context } from '..';
+const ProjectsForUser =observer(()=> {
     const [projects, setProject] = useState([]);
+    const {userApp} = useContext(Context)
+
     useEffect(() => {
         const fetchProjects = async () => {
+          var data;
           try {
-            const data = await getProjectsForUser();
+            switch(userApp.getRole()){
+              case "ROLE_USER":
+                {
+                  data = await getProjectsForUser();
+                  break;
+                }
+              case "ROLE_ADMIN":
+                {
+                  data = await getProjectsForAdmin()
+                  break;
+                }
+                case "ROLE_FOREMAN":
+                {
+                  data = await getProjectsForForeman();
+                  break;
+                }
+            }
+           
             setProject(data);
           } catch (error) {
             console.error('Ошибка при получении данных проектов:', error);
@@ -34,4 +55,6 @@ export default function ProjectsForUser() {
            </div>
        </>
     )
-}
+})
+
+export default ProjectsForUser;

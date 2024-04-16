@@ -5,6 +5,16 @@ export const getProjectsForUser = async () =>{
     return data
 }
 
+export const getProjectsForAdmin = async () =>{
+  const {data} = await $authHost.get('/api/projects')
+  return data
+}
+
+export const getProjectsForForeman = async () =>{
+  const {data} = await $authHost.get('/api/projects/foreman')
+  return data
+}
+
 export const getProject = async(id)=>{
     const {data} = await $authHost.get('/api/projects/'+id)
     return data

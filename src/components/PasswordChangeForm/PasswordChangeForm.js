@@ -8,7 +8,9 @@ const PasswordChangeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Логика обработки события отправки формы
+    setOldPassword("")
+    setNewPassword("")
+    //TODO
   };
 
   return (

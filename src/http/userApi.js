@@ -7,11 +7,16 @@ export const registration = async (username, password, name, surname, phoneNumbe
     return data
 }
 
-export const createAccount = async (username, password, name, surname, phoneNumber) =>{
-    const {data} = await $host.post('/api/auth/register', {username, password, name, surname, phoneNumber})
+// export const createAccount = async (username, password, name, surname, phoneNumber) =>{
+//     const {data} = await $host.post('/api/auth/register', {username, password, name, surname, phoneNumber})
 
-    return data
-}
+//     return data
+// }
+
+
+export const createAccount = async (username, password, name, surname, phoneNumber, role, specializationId) =>{
+        await $authHost.post('/api/auth/admin/register', {username, password, name, surname, phoneNumber, role, specializationId})
+    }
 
 export const login = async (username, password) =>{
     const {data} = await $host.post('/api/auth/login', {username, password})

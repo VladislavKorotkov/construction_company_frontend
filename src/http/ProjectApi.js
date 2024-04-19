@@ -56,3 +56,35 @@ export const getProjectEstimate = async(id)=>{
   const {data} = await $authHost.get('/api/projects/'+id +'/estimate')
   return data
 }
+
+export const deleteProjectMaterial = async(projectId, materialId)=>{
+  const {data} = await $authHost.delete('/api/projects/'+ projectId +'/estimate/materials/' + materialId)
+  return data
+}
+
+export const deleteProjectWork = async(projectId, workId)=>{
+  const {data} = await $authHost.delete('/api/projects/'+ projectId +'/estimate/works/' + workId)
+  return data
+}
+
+export const addProjectMaterial = async(projectId, req)=>{
+  const {data} = await $authHost.post('/api/projects/'+ projectId +'/estimate/materials', req)
+  return data
+}
+
+export const addProjectWork = async(projectId, req)=>{
+  console.log(projectId, req)
+  const {data} = await $authHost.post('/api/projects/'+ projectId +'/estimate/works', req)
+  return data
+}
+
+export const finishProject = async(projectId)=>{
+  const {data} = await $authHost.put('/api/projects/'+ projectId)
+  return data
+}
+
+export const createContract = async(projectId, req)=>{
+  const {data} = await $authHost.post('/api/projects/'+ projectId + '/contract', req)
+  return data
+}
+

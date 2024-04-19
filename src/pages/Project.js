@@ -13,7 +13,10 @@ import ProjectManageCard from '../components/ProjectManageCard';
 
 const Project = observer(()=>{
     const {id} = useParams()
-    const [project, setProject] = useState(null)
+    const [project, setProject] = useState({
+      id: null,
+      isCompleted: false
+    })
     const {userApp} = useContext(Context)
     useEffect(() => {
         const fetchProjectData = async () => {
@@ -49,12 +52,12 @@ const Project = observer(()=>{
               <Layout>
                   <div className="d-flex justify-content-center" style={{ minHeight: '100vh'}}>
                       <div style={{ width: '90%', maxWidth:'100%' }}>
-                        {project && <ProjectInfoCard project={project} onDownloadXlsx={handleDownloadXlsx} onDownloadContract={handleDownloadContract}/>}
-                        {userApp.getRole()==="ROLE_FOREMAN"?
+                        {project.id && <ProjectInfoCard project={project} onDownloadXlsx={handleDownloadXlsx} onDownloadContract={handleDownloadContract}/>}
+                        {userApp.getRole()==="ROLE_FOREMAN" && project.isCompleted==false?
                         <>
                         <ProjectManageCard projectId={id}></ProjectManageCard>
                         </>:
-                          project && <>
+                          project.id && <>
                             <h2>Задачи</h2>
                             {project.tasks.map((task) => (
                                 <TaskCard key={task.id} task={(task) }  />

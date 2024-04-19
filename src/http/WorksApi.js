@@ -18,3 +18,8 @@ export const deleteWork = async (id) => {
 export const updateWork = async (id) =>{
     
 }
+
+export const getAvailableWorks = async () =>{
+    const {data} = await $authHost.get('/api/works/available')
+    return data
+}

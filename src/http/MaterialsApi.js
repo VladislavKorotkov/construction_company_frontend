@@ -5,6 +5,12 @@ export const getMaterials = async () =>{
     const {data} = await $authHost.get('/api/materials')
     return data
 }
+
+export const getAvailableMaterials = async () =>{
+    const {data} = await $authHost.get('/api/materials/available')
+    return data
+}
+
 export const addMaterial = async (material) =>{
     const {data} = await $authHost.post('/api/materials', material)
     return data;

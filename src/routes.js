@@ -13,12 +13,15 @@ import ProjectsForUser from "./pages/ProjectsForUser";
 import Register from "./pages/Register";
 import Specialities from "./pages/Specialties";
 import Users from "./pages/Users";
-import { ADMIN_ROUTE, APPLICATIONS_AVAILABLE_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, HOME_ROUTE, MATERIAL_FORM_ROUTE, MATERIAL_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, PROJECT_MANAGMENT_ROUTE, PROJECT_ROUTE, REGISTER_ROUTE, SPECIALITIES_FORM_ROUTE, SPECIALITIES_ROUTE, USERS_ROUTE, USER_FORM_ROUTE, WORK_FORM_ROUTE, WORK_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, APPLICATIONS_AVAILABLE_ROUTE, APPLICATIONS_ROUTE, APPLICATION_FORM_ROUTE, AUTH_ROUTE, CREATE_CONTACT_FORM_ROUTE, HOME_ROUTE, MATERIAL_FORM_ROUTE, MATERIAL_ROUTE, PROFILE_ROUTE, PROJECTS_ROUTE, PROJECT_ADD_MATERIAL_ROUTE, PROJECT_ADD_WORK_ROUTE, PROJECT_MANAGMENT_ROUTE, PROJECT_ROUTE, REGISTER_ROUTE, SPECIALITIES_FORM_ROUTE, SPECIALITIES_ROUTE, USERS_ROUTE, USER_FORM_ROUTE, WORK_FORM_ROUTE, WORK_ROUTE } from "./utils/consts";
 import FormSpeciality from "./pages/FormSpecilaity";
 import Materials from "./pages/Materials";
 import FormMaterial from "./pages/FormMaterial";
 import Works from "./pages/Works";
 import FormWork from "./pages/FormWork";
+import FormProjectMaterial from "./pages/FormProjectMaterial";
+import FormProjectWork from "./pages/FormProjectWork";
+import FormCreateContract from "./pages/FormCreateContract";
 
 export const authRoutes = [
     {
@@ -100,6 +103,20 @@ export const publicRoutes = [
     {
         path: WORK_FORM_ROUTE,
         Component: FormWork
+    },
+    {
+        path: PROJECT_ADD_MATERIAL_ROUTE,
+        Component: FormProjectMaterial
+    },
+
+    {
+        path: PROJECT_ADD_WORK_ROUTE,
+        Component: FormProjectWork
+    },
+
+    {
+        path: CREATE_CONTACT_FORM_ROUTE,
+        Component: FormCreateContract
     },
 
 ]

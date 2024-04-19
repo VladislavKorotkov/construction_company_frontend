@@ -88,3 +88,8 @@ export const createContract = async(projectId, req)=>{
   return data
 }
 
+
+export const getAvailableWorks = async(id)=>{
+  const {data} = await $authHost.get('/api/projects/'+ id +'/works')
+  return data
+}

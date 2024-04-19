@@ -10,12 +10,14 @@ import { HOME_ROUTE } from '../utils/consts';
 import { observer } from 'mobx-react-lite';
 import { Context } from '..';
 import ProjectManageCard from '../components/ProjectManageCard';
+import TaskManageCard from '../components/TasksManageCard';
 
 const Project = observer(()=>{
     const {id} = useParams()
     const [project, setProject] = useState({
       id: null,
-      isCompleted: false
+      isCompleted: false,
+      tasks: []
     })
     const {userApp} = useContext(Context)
     useEffect(() => {
@@ -56,8 +58,9 @@ const Project = observer(()=>{
                         {userApp.getRole()==="ROLE_FOREMAN" && project.isCompleted==false?
                         <>
                         <ProjectManageCard projectId={id}></ProjectManageCard>
+                        <TaskManageCard projectId={id} project={project} setProject={setProject}></TaskManageCard>
                         </>:
-                          project.id && <>
+                          project.id && project.tasks.length!=0 &&<>
                             <h2>Задачи</h2>
                             {project.tasks.map((task) => (
                                 <TaskCard key={task.id} task={(task) }  />

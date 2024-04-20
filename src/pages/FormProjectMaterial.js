@@ -83,7 +83,7 @@ export default function FormProjectMaterial() {
                         value={data.quantity}
                         onChange={handleChange}
                         />
-                        <label htmlFor="floatingInputCustom">Стоимость</label>
+                        <label htmlFor="floatingInputCustom">Количество</label>
                     </Form.Floating>
                     <div className="text-center">
                         <Button type="submit" className='mt-1'>

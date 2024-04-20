@@ -25,11 +25,16 @@ const ProjectsForUser =observer(()=> {
                   data = await getProjectsForAdmin()
                   break;
                 }
-                case "ROLE_FOREMAN":
-                {
-                  data = await getProjectsForForeman();
-                  break;
-                }
+              case "ROLE_FOREMAN":
+              {
+                data = await getProjectsForForeman();
+                break;
+              }
+              case "ROLE_BUILDER":
+              {
+                data = await getProjectsForAdmin();
+                break;
+              }
             }
            
             setProject(data);

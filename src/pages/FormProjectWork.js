@@ -58,7 +58,7 @@ export default function FormProjectWork() {
     return (
         <Container className='d-flex justify-content-center align-items-center' style ={{height: window.innerHeight - 54}}>
             <Card style={{width: 500}} className='p-5'>
-                <h2 className='m-auto mb-3'>Добавление работу</h2>
+                <h2 className='m-auto mb-3'>Добавление работы</h2>
                 <Form onSubmit={handleAddWork}>
                     <Form.Floating className="mb-3">
                         <FloatingLabel controlId="floatingUnitMaterialCustom" label="Работа">
@@ -84,7 +84,7 @@ export default function FormProjectWork() {
                         value={data.quantity}
                         onChange={handleChange}
                         />
-                        <label htmlFor="floatingInputCustom">Стоимость</label>
+                        <label htmlFor="floatingInputCustom">Количество</label>
                     </Form.Floating>
                     <div className="text-center">
                         <Button type="submit" className='mt-1'>

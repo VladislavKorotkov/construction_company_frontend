@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
 import back from "../img/back.jpg"
 import advantages from '../data/advantages';
 import Testimonial from '../components/Testimonial/Testimonial';
 import Advantage from '../components/Advantage';
+import { getReviews } from '../http/ReviewApi';
 
 export default function Home () {
-    const testimonials = [
-        {
-          name: 'John Doe',
-          comment: 'Great service! I highly recommend it.',
-        },
-        {
-          name: 'Jane Smith',
-          comment: 'Excellent product quality and fast delivery.',
-        },
-      ];
+    const[testimonials, setTestimonoals] = useState([])
+    useEffect(() => {
+      const fetchReviews = async () => {
+        try {
+          const data = await getReviews();
+          setTestimonoals(data);
+        } catch (error) {
+        }
+      };
+      fetchReviews();
+    }, []);
+
     return (
         <>
         <section className="position-relative">
@@ -41,7 +44,6 @@ export default function Home () {
         </Container>
       </section>
 
-
       <section className="py-5">
         <Container>
           <Row>
@@ -52,14 +54,12 @@ export default function Home () {
           {testimonials.map((testimonial, index) => (
         <Testimonial
           key={index}
-          name={testimonial.name}
-          comment={testimonial.comment}
+          name={testimonial.userName}
+          comment={testimonial.message}
         />
       ))}
         </Container>
       </section>
-
-    
     </>
     )
 }

@@ -13,6 +13,7 @@ import ProjectManageCard from '../components/ProjectManageCard';
 import TaskManageCard from '../components/TasksManageCard';
 
 const Project = observer(()=>{
+  const navigate = useNavigate()
     const {id} = useParams()
     const [project, setProject] = useState({
       id: null,
@@ -46,6 +47,11 @@ const Project = observer(()=>{
           console.error('Ошибка скачивания:', error);
         }
       };
+
+      
+      const handleAddReview = async () => {
+        navigate("/project/"+id+"/addreview")
+      };
     
     
     return (
@@ -54,7 +60,7 @@ const Project = observer(()=>{
               <Layout>
                   <div className="d-flex justify-content-center" style={{ minHeight: '100vh'}}>
                       <div style={{ width: '90%', maxWidth:'100%' }}>
-                        {project.id && <ProjectInfoCard project={project} onDownloadXlsx={handleDownloadXlsx} onDownloadContract={handleDownloadContract}/>}
+                        {project.id && <ProjectInfoCard project={project} onDownloadXlsx={handleDownloadXlsx} onDownloadContract={handleDownloadContract} onAddReview={handleAddReview}/>}
                         {userApp.getRole()==="ROLE_FOREMAN" && project.isCompleted==false?
                         <>
                         <ProjectManageCard projectId={id}></ProjectManageCard>
